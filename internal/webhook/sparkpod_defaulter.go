@@ -336,9 +336,9 @@ func addPrometheusConfig(pod *corev1.Pod, app *v1beta2.SparkApplication) error {
 	}
 	addConfigMapVolume(pod, name, volumeName)
 	addConfigMapVolumeMount(pod, volumeName, mountPath)
-	logger.Info("could not mount volume %s in path %s", volumeName, mountPath)
+	logger.Info(fmt.Sprintf("could not mount volume %s in path %s", volumeName, mountPath))
 	addContainerPort(pod, promPort, promProtocol, promPortName)
-	logger.Info("could not expose port %d to scrape metrics outside the pod", promPort)
+	logger.Info(fmt.Sprintf("could not expose port %d to scrape metrics outside the pod", promPort))
 	return nil
 }
 
